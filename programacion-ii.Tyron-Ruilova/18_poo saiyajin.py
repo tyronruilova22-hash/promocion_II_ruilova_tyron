@@ -1,4 +1,4 @@
-from 17 poo guerrero import Guerrero 
+from poo_guerrero import Guerrero 
 
 class Androide:
     nombre: str
