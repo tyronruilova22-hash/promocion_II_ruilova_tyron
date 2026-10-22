@@ -1,0 +1,53 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+
+
+def home(request):
+    """Vista de bienvenida de la app tasks."""
+    return HttpResponse("Hola, TaskFlow")
+
+
+def primera(request):
+    """Mi primera vista."""
+    return HttpResponse("Esta es mi primera vista")
+
+
+def register(request):
+    """Registro de usuarios."""
+    return HttpResponse("Registro de usuarios en linea")
+
+
+def about_me(request):
+    """Soy el creador más perron de aqui :V"""
+    return HttpResponse("Estudiante Isaac Campaña")
+
+
+def greeting(request, nombre):
+    """Hola a todos esta es mi pagina"""
+    return HttpResponse(f"Hola {nombre}, bienvenido a TaskFlow")
+
+
+def destinatario(request, titulo, nombre, cargo):
+    """Registro de usuarios"""
+    return HttpResponse(f"Bienvenido: {titulo} {nombre}, su cargo es {cargo}")
+
+
+def base_triangulo(request, base, altura):
+    """Área de un triángulo"""
+    return HttpResponse(f"El área de un triángulo es: {base * altura / 2}")
+
+
+def my_first_template(request):
+    contexto = {
+        "titulo": "TaskFlow",
+        "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
+    }
+    return render(request, "tasks/my_first_template.html", contexto)
+
+
+def leads_like(request):
+    contexto = {
+        "titulo": "TaskFlow",
+        "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
+    }
+    return render(request, "tasks/leads_like.html", contexto)

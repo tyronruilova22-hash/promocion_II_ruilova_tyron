@@ -35,11 +35,21 @@ def base_triangulo(request, base, altura):
 
 def my_firts_template(request, base, altura):
     """Registro de usuarios"""
-    return HttpResponse(f"El área de un triángulo es: {base*altura/2}")
+    return HttpResponse(
+        f"El área de un triángulo es: {base*altura/2}")
 
 def my_first_template(request):
     contexto = {
         "titulo": "TaskFlow",
         "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
-    }  # <--- Faltaba esta llave
+    }
     return render(request, "tasks/my-first-template.html", contexto)
+
+def leads_like(request):
+    contexto = {
+        "titulo": "TaskFlow",
+        "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
+    }
+    return render(request, "tasks/leads/leads-like.html", contexto)
+def primera(request):
+    return HttpResponse("Esta es mi primera vista")
