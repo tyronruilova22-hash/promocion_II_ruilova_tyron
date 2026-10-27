@@ -1,0 +1,25 @@
+combustible = 100
+vuelta = 1
+
+while combustible >= 20:
+    print(f"Vuelta {vuelta}")
+    print(f"Combustible inicial: {combustible}")
+
+    combustible-= 20
+    print(f"Combustible restante: {combustible}")
+    vuelta = +1
+
+print("Carrera FInalizada")
+
+
+
+
+
+
+
+
+
+
+
+
+
