@@ -1,42 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .forms import TaskForm
+from .models import Project, Task
 
 def home(request):
-    """Vista de bienvenida de la app tasks."""
-    return HttpResponse("""
-        <html>
-            <body>
-                <h1>TaskFlow</h1>
-                <p>Bienvenido al sistema</p>
-            </body>
-        </html>
-    """)
+    contexto = {
+        "titulo": "TaskFlow",
+        "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
+        "projects": Project.objects.order_by("-created_at"),
+    }
+    return render(request, "home.html", contexto)
 
 def register(request):
-    """Registro de usuarios"""
     return HttpResponse("Registro de Usuarios")
 
 def about_me(request):
-    """Registro de usuarios"""
-    # Dejé tu línea original
-    return HttpResponse("Tyron Ruilova<h1>Master</h1>")
+    return HttpResponse("Ing. Francisco Higuera")
 
 def greeting(request, nombre):
-    """Registro de usuarios"""
     return HttpResponse(f"Hola {nombre}, bienvenido a TaskFlow")
 
 def destination(request, titulo, nombre, cargo):
-    """Registro de usuarios"""
     return HttpResponse(f"Bienvenido: {titulo} {nombre}, su cargo es: {cargo}")
 
 def base_triangulo(request, base, altura):
-    """Registro de usuarios"""
     return HttpResponse(f"El área de un triángulo es: {base*altura/2}")
-
-def my_firts_template(request, base, altura):
-    """Registro de usuarios"""
-    return HttpResponse(
-        f"El área de un triángulo es: {base*altura/2}")
 
 def my_first_template(request):
     contexto = {
@@ -51,5 +39,16 @@ def leads_like(request):
         "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
     }
     return render(request, "tasks/leads/leads-like.html", contexto)
+
 def primera(request):
     return HttpResponse("Esta es mi primera vista")
+
+def task_create(request):
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("tasks:home")
+    else:
+        form = TaskForm()
+    return render(request, "tasks/task_form.html", {"form": form, "modo": "crear"})

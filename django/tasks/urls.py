@@ -13,4 +13,5 @@ urlpatterns = [
     path("my-first-template/", views.my_first_template, name="my-first-template"),
     path("leads-like/", views.leads_like, name="leads-like"),
     path("primera/", views.primera, name="primera"),
+    path("tasks/create/", views.task_create, name="task_create"),
 ]
