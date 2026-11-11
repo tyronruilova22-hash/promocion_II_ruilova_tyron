@@ -9,7 +9,7 @@ def home(request):
         "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
         "projects": Project.objects.order_by("-created_at"),
     }
-    return render(request, "home.html", contexto)
+    return render(request, "tasks/home.html", contexto)
 
 def register(request):
     return HttpResponse("Registro de Usuarios")

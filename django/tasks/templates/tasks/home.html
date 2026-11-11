@@ -18,9 +18,7 @@
         {% for project in projects %}
             <tr>
                 <td>{{ project.name }}</td>
-                <!-- Si la descripción está vacía, muestra "Sin descripción disponible." -->
                 <td>{{ project.description|default:"Sin descripción disponible." }}</td>
-                <!-- Formatea la fecha como día/mes/año -->
                 <td>{{ project.created_at|date:"d/m/Y" }}</td>
             </tr>
         {% empty %}
